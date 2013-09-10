@@ -1,0 +1,29 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Rozetka</title>
+		<script src="js/lib/angular-1.2.0-rc.2.min.js"></script>
+		<script src="js/lib/jquery-2.0.3.min.js"></script>
+	</head>
+	<body>
+		<input type="file" name="file" id="file" multiple="true">
+		<script>
+			var $input = $('#file')
+
+			$input.bind('change', function(e) {
+				upload(this.files);
+			});
+
+			function upload(files) {
+				files.forEach(function(file) {
+					var xhr = new XMLHttpRequest();
+
+					xhr.open('PUT', 'upload/');
+					xhr.send(file);
+				});
+			}
+
+		</script>
+	</body>
+</html>
