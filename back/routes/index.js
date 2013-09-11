@@ -1,7 +1,5 @@
 
-/*
- * GET home page.
- */
+var fs = require('fs');
 
 
 exports.index = function(req, res){
@@ -9,5 +7,9 @@ exports.index = function(req, res){
 };
 
 exports.test = function(req, res){
-    console.log(req.body);
+	req.form.complete(function(err, fields, files) {
+		console.log(arguments)
+	})
+    // console.log(req.files, req.body);
+    res.send(200, '')
 }

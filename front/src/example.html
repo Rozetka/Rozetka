@@ -7,18 +7,23 @@
 		<script src="js/lib/jquery-2.0.3.min.js"></script>
 	</head>
 	<body>
+		<form action="/upload" method="post" enctype="multipart/form-data">
 		<input type="file" name="file" id="file" multiple="true">
+			<input type="text" name="wow" value="nieeee">
+			<input type="submit">
+		</form>
 		<script>
 			var $input = $('#file')
 
 			$input.bind('change', upload);
 
-			function upload(files) {
-				$.each(files, function(file) {
+			function upload(e) {
+				var files = e.currentTarget.files
+				$.each(files, function() {
 					var xhr = new XMLHttpRequest();
-
-					xhr.open('PUT', 'upload/');
-					xhr.send(file);
+					xhr.open('post', 'upload/');
+					// xhr.setRequestHeader('Content-type', 'multipart/form-data;boundary='+Math.random().toString(16))
+					xhr.send(this);
 				});
 			}
 
