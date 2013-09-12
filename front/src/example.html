@@ -22,7 +22,7 @@
 				$.each(files, function() {
 					var xhr = new XMLHttpRequest();
 					xhr.open('post', 'upload/');
-					// xhr.setRequestHeader('Content-type', 'multipart/form-data;boundary='+Math.random().toString(16))
+                    xhr.setRequestHeader('Content-type', 'application/octet-stream')
 					xhr.send(this);
 				});
 			}

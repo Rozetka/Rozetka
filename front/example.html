@@ -20,7 +20,11 @@
 					var xhr = new XMLHttpRequest();
 
 					xhr.open('PUT', 'upload/');
-					xhr.send(file);
+                    xhr.setRequestHeader('Content-type', 'application/octet-stream')
+					xhr.send({
+                        name: "test",
+                        file:file
+                    });
 				});
 			}
 

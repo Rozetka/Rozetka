@@ -1,5 +1,6 @@
 
-var fs = require('fs');
+var fs = require('fs')
+    ,formidable = require('formidable');
 
 
 exports.index = function(req, res){
@@ -7,9 +8,10 @@ exports.index = function(req, res){
 };
 
 exports.test = function(req, res){
-	req.form.complete(function(err, fields, files) {
-		console.log(arguments)
-	})
+	var form = formidable.IncomingForm();
+    form.parse(req, function(err, fields, files){
+        console.log(arguments);
+    });
     // console.log(req.files, req.body);
     res.send(200, '')
 }
